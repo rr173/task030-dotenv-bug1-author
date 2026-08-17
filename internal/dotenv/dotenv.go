@@ -118,7 +118,7 @@ func Parse(content string, base map[string]string) Result {
 		memo:     make(map[string]resolveResult, len(order)),
 		stackSet: make(map[string]bool),
 	}
-	var vars []Variable
+	vars := make([]Variable, 0, len(order))
 	for _, d := range order {
 		rr := r.resolve(d.key)
 		errs = append(errs, rr.errs...)
